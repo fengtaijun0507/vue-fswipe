@@ -8,6 +8,10 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
     "example": "webpack-dev-server --config ./webpack.example.config.js --inline --hot --colors"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fengtaijun0507/vue-fswipe"
+  },
   "peerDependencies": {
     "vue": "^1.0.10"
   },
