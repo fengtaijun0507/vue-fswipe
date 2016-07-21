@@ -12,6 +12,7 @@
     "type": "git",
     "url": "https://github.com/fengtaijun0507/vue-fswipe"
   },
+  "license": "MIT",
   "peerDependencies": {
     "vue": "^1.0.10"
   },
