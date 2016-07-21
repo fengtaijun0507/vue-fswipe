@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue-fswipe examples</title>
+    <script>
+      !function(a,b){function c(){var b=f.getBoundingClientRect().width;b/i>540&&(b=540*i);var c=b/10;f.style.fontSize=c+"px",k.rem=a.rem=c}var d,e=a.document,f=e.documentElement,g=e.querySelector('meta[name="viewport"]'),h=e.querySelector('meta[name="flexible"]'),i=0,j=0,k=b.flexible||(b.flexible={});if(g){console.warn("将根据已有的meta标签来设置缩放比例");var l=g.getAttribute("content").match(/initial\-scale=([\d\.]+)/);l&&(j=parseFloat(l[1]),i=parseInt(1/j))}else if(h){var m=h.getAttribute("content");if(m){var n=m.match(/initial\-dpr=([\d\.]+)/),o=m.match(/maximum\-dpr=([\d\.]+)/);n&&(i=parseFloat(n[1]),j=parseFloat((1/i).toFixed(2))),o&&(i=parseFloat(o[1]),j=parseFloat((1/i).toFixed(2)))}}if(!i&&!j){var p=(a.navigator.appVersion.match(/android/gi),a.navigator.appVersion.match(/iphone/gi)),q=a.devicePixelRatio;i=p?q>=3&&(!i||i>=3)?3:q>=2&&(!i||i>=2)?2:1:1,j=1/i}if(f.setAttribute("data-dpr",i),!g)if(g=e.createElement("meta"),g.setAttribute("name","viewport"),g.setAttribute("content","initial-scale="+j+", maximum-scale="+j+", minimum-scale="+j+", user-scalable=no"),f.firstElementChild)f.firstElementChild.appendChild(g);else{var r=e.createElement("div");r.appendChild(g),e.write(r.innerHTML)}a.addEventListener("resize",function(){clearTimeout(d),d=setTimeout(c,300)},!1),a.addEventListener("pageshow",function(a){a.persisted&&(clearTimeout(d),d=setTimeout(c,300))},!1),"complete"===e.readyState?e.body.style.fontSize=12*i+"px":e.addEventListener("DOMContentLoaded",function(){e.body.style.fontSize=12*i+"px"},!1),c(),k.dpr=a.dpr=i,k.refreshRem=c,k.rem2px=function(a){var b=parseFloat(a)*this.rem;return"string"==typeof a&&a.match(/rem$/)&&(b+="px"),b},k.px2rem=function(a){var b=parseFloat(a)/this.rem;return"string"==typeof a&&a.match(/px$/)&&(b+="rem"),b}}(window,window.lib||(window.lib={}));
+    </script>
+    <style>
+    html{
+        width: 100%;
+        height: 100%;
+    }
+    body{
+        width: 10rem;
+        margin: 0 auto;
+        height: 100%;
+        padding: 0;
+    }
+    html {
+        -webkit-text-size-adjust: 100%;
+        font-size: 62.5%;
+        -webkit-overflow-scrolling: touch;
+        -webkit-text-size-adjust: 100%;
+        -webkit-user-select: none;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+    body {
+        margin: 0 auto;
+        max-width: 10rem;
+        word-break: break-all;
+        word-wrap: break-word;
+        font: 1.4rem/1 Helvetica, Arial, sans-serif;
+    }
+    input,
+    select {
+        -webkit-tap-highlight-color: transparent;
+    }
+    div {
+        position: relative;
+    }
+    .clearfix {
+        display: block;
+    }
+    .clearfix:after {
+        content: ".";
+        height: 0;
+        visibility: hidden;
+        display: block;
+        clear: both;
+    }
+    #fswap {
+        width: 10rem;
+        height: 100%;
+        position: relative;
+    }
+    p,
+    ul,
+    ol,
+    li
+    {
+        margin: 0;
+        padding: 0;
+    }
+    ul,
+    ol {
+        list-style: none;
+    }
+    a {
+        text-decoration: none;
+    }
+    fieldset,
+    img {
+        border: 0;
+    }
+    </style>
+</head>
+
+<body>
+    <div id='fswap'>
+        <swipe :img-message='imgData'><swipe>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/hammerjs/hammer.min.js"></script>
+    <script src="../node_modules/vue-touch/vue-touch.js"></script>
+    <script src="/dist/vue-fswipe.js"></script>
+    <script type="text/javascript">
+      Vue.use(VueTouch)
+      var vueFswipe = VueFswipe.Swipe;
+      new Vue({
+        el: 'body',
+        components: {
+         'swipe': vueFswipe,
+        },
+        data: function () {
+          return {
+            imgData: {
+            count: 3,
+            imgArray: [{src: '../static/images/info1.jpg', href: 'http://movie.mtime.com/209183/posters_and_images'}, {src: '../static/images/info2.jpg', href: 'http://v.yinyuetai.com/video/63732'}, {src: '../static/images/info3.jpg', href: 'https://www.baidu.com'}]
+            }
+          }
+        }
+      });
+    </script>
+</body>
+
+</html>
